@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Viewer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="image-container">
+        <img id="imageDisplay" src="image1.png" alt="Image 1">
+    </div>
+    <button id="changeButton">Change Filter</button>
+
+    <script>
+        let currentImage = 1;
+        const images = ["image1.png", "image2.png", "image3.png", "image4.png"];
+        const button = document.getElementById('changeButton');
+        const imageDisplay = document.getElementById('imageDisplay');
+
+        button.addEventListener('click', function() {
+            currentImage = (currentImage % images.length) + 1;
+            imageDisplay.src = images[currentImage - 1];
+
+            if (currentImage === 1 || currentImage === 2) {
+                button.style.backgroundColor = "white";
+                button.style.color = "black";
+            } else if (currentImage === 3) {
+                button.style.backgroundColor = "red";
+                button.style.color = "white";
+            } else if (currentImage === 4) {
+                button.style.backgroundColor = "blue";
+                button.style.color = "white";
+            }
+        });
+    </script>
+</body>
+</html>
